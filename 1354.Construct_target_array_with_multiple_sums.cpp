@@ -17,7 +17,7 @@ public:
 
         int targetMax;
         int targetMaxIndex;
-        long sum;
+        long long sum;
 
         if (target.size() == 1) {
             if (target[0] == 1) {
@@ -58,7 +58,7 @@ public:
 
 int main() {
     Solution sol;
-    vector<int> target = {9, 3, 5};
+    vector<int> target = {9,3,5};
     bool res = sol.isPossible(target);
     cout << res;
     return 0;
