@@ -24,17 +24,6 @@ public:
 
         int res = 0;
 
-        // for (auto i : boxTypes) {
-        //     if (truckSize > i[0]) {
-        //         res += i[0]*i[1];
-        //         truckSize -= i[0];
-        //     }
-        //     else {
-        //         res += truckSize*i[1];
-        //         break;
-        //     }
-        // }
-
         for (auto i : boxTypes) {
             if (truckSize == 0) break;
             int putBox = min(i[0], truckSize);
