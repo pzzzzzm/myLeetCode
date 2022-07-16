@@ -8,7 +8,9 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <algorithm>
 #include <queue>
+#include <cmath>
 
 using namespace std;
 
