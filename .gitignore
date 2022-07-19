@@ -2,4 +2,5 @@
 *.exe
 _*
 !_structs.h
+!_examples.cpp
 
