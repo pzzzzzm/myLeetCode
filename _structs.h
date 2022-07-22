@@ -23,7 +23,7 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-TreeNode* buildTree(std::vector<int> v) {
+TreeNode* buildTree(std::vector<int> v, int nullRep=-1001) {
     TreeNode* root = new TreeNode(v[0]);
     std::queue<TreeNode*> q;
     q.push(root);
@@ -32,7 +32,7 @@ TreeNode* buildTree(std::vector<int> v) {
         int currSize = q.size();
         for (int i = 0; i < currSize; i ++) {
             if (q.front() != nullptr) {
-                if (v[index] != NULL) {
+                if (v[index] != nullRep) {
                     TreeNode* leftNode = new TreeNode(v[index]);
                     q.front()->left = leftNode;
                     q.push(leftNode);
@@ -42,7 +42,9 @@ TreeNode* buildTree(std::vector<int> v) {
                 }
                 index ++;
 
-                if (v[index] != NULL) {
+                if (index >= v.size()) break;
+
+                if (v[index] != nullRep) {
                     TreeNode* rightNode = new TreeNode(v[index]);
                     q.front()->right = rightNode;
                     q.push(rightNode);
@@ -52,9 +54,9 @@ TreeNode* buildTree(std::vector<int> v) {
                 }                
                 index ++;
             }
-            else {
-                index += 2;                
-            }
+            // else {
+            //     index += 2;             
+            // }
             q.pop();
             
         }
@@ -70,4 +72,41 @@ ListNode* buildList(std::vector<int> v) {
         curr = curr->next;
     }
     return root->next;
+}
+
+
+std::vector<std::vector<int>> build2dVector(std::string s) {
+    bool isClosed = true;
+    std::vector<std::vector<int>> parent;
+    std::vector<int>* curr;
+    int temp = 0;
+
+    for (int i = 1; i < s.size(); i ++) {
+        switch (s[i]) {
+        case '[':
+            curr = new std::vector<int>;
+            isClosed = false;
+            break;
+        case ']':
+            if (!isClosed) {
+                curr->push_back(temp);
+                temp = 0;
+                parent.push_back(*curr);
+                isClosed = true;
+            }
+            break;
+        case ',':
+            if (!isClosed) {
+                curr->push_back(temp);
+                temp = 0;
+            } 
+            break;             
+        case ' ':
+            break;
+        default:
+            temp = temp*10 + s[i] - '0';
+            break;
+        }
+    }
+    return parent;
 }

@@ -1,6 +1,7 @@
 .vscode
 *.exe
 _*
+backup*
 !_structs.h
 !_examples.cpp
 

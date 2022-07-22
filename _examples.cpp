@@ -28,13 +28,14 @@ int main() {
     // map
     map<int, char> m;
     m[2] = 'b';
-    m.insert(pair<int, char> (3, 'c'));
-    m.insert(make_pair(4, 'd'));
+    m.insert(pair<int, char> (0, 'c'));
+    m.insert(make_pair(6, 'd'));
+    m[4] = 'v';
 
-    // for (auto mi: m) {
-    //     cout << mi.first;
-    //     cout << mi.second;
-    // }
+    for (auto mi: m) {
+        cout << mi.first;
+        cout << mi.second;
+    }
 
     // unordered_map
     unordered_map<int, char> um;
